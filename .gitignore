@@ -1,4 +1,5 @@
-./target/surefire-reports
-./target/generated-sources
-./target/generated-test-sources
-./target/test-classes
+target
+.DS_Store
+.idea
+*.iml
+*.log

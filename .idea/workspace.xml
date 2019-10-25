@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ee2e748d-bcb9-46b2-937e-ffbd3e0855be" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/Calculator.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Calulator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Calulator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Calulator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Calulator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/CalculateTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/CalculateTest.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -33,11 +28,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Calulator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="303">
-              <caret line="33" selection-start-line="33" selection-end-line="33" />
+            <state relative-caret-position="570">
+              <caret line="38" column="15" selection-start-line="38" selection-start-column="15" selection-end-line="38" selection-end-column="15" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -45,10 +40,19 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="45">
+              <caret line="3" column="1" selection-start-line="3" selection-start-column="1" selection-end-line="3" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/CalculateTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
+            <state relative-caret-position="348">
               <caret line="100" selection-start-line="100" selection-end-line="100" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -63,6 +67,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Go File" />
       </list>
     </option>
   </component>
@@ -75,6 +80,8 @@
         <option value="$PROJECT_DIR$/src/test/java/CalculateTest.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/Calulator.java" />
+        <option value="$PROJECT_DIR$/gitignore.go" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -114,19 +121,6 @@
               <item name="Calculator" type="b2602c69:ProjectViewProjectNode" />
               <item name="Calculator" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Calculator" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Calculator" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Calculator" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Calculator" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -144,6 +138,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="DefaultGoTemplateProperty" value="Go File" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
@@ -236,17 +231,11 @@
       <workItem from="1537260747185" duration="13000" />
       <workItem from="1537261941493" duration="2000" />
       <workItem from="1537535036504" duration="668000" />
-      <workItem from="1571997895842" duration="7583000" />
+      <workItem from="1571997895842" duration="9719000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="CalculateTest_numbersBiggerThanThousandShouldBeIgnored - 2019.10.25 at 12h 52m 41s.xml">
-      <configuration name="CalculateTest.numbersBiggerThanThousandShouldBeIgnored" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="CalculateTest_numbersBiggerThanThousandShouldBeIgnored - 2019.10.25 at 12h 52m 46s.xml">
-      <configuration name="CalculateTest.numbersBiggerThanThousandShouldBeIgnored" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="CalculateTest - 2019.10.25 at 12h 52m 51s.xml">
       <configuration name="CalculateTest" configurationId="JUnit" />
     </history-entry>
@@ -271,12 +260,19 @@
     <history-entry file="CalculateTest - 2019.10.25 at 13h 50m 30s.xml">
       <configuration name="CalculateTest" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="CalculateTest - 2019.10.25 at 13h 50m 31s.xml">
+      <configuration name="CalculateTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CalculateTest - 2019.10.25 at 13h 51m 01s.xml">
+      <configuration name="CalculateTest" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14370000" />
+    <option name="totallyTimeSpent" value="16506000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1440" y="-157" width="1920" height="1016" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19648562" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -289,13 +285,13 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.3939394" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.39935064" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39935064" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="9" weight="0.32900432" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="9" visible="true" weight="0.32900432" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="11" weight="0.32900432" />
       <window_info anchor="right" id="Maven" />
@@ -315,18 +311,6 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Calulator.java</url>
-          <line>33</line>
-          <properties />
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
-  </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
@@ -343,9 +327,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/gitignore.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="18" selection-start-column="18" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Calulator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="570">
+          <caret line="38" column="15" selection-start-line="38" selection-start-column="15" selection-end-line="38" selection-end-column="15" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/CalculateTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
+        <state relative-caret-position="348">
           <caret line="100" selection-start-line="100" selection-end-line="100" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -353,13 +354,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Calulator.java">
+    <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="303">
-          <caret line="33" selection-start-line="33" selection-end-line="33" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="45">
+          <caret line="3" column="1" selection-start-line="3" selection-start-column="1" selection-end-line="3" selection-end-column="1" />
         </state>
       </provider>
     </entry>
