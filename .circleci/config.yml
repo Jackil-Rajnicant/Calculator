@@ -6,15 +6,16 @@ workflows:
   version: 2.1
   "Build, Test & Run":
     jobs:
+      - queue/block_workflow:
+          time: '10'
+          consider-branch: false
       - build:
           requires:
             - test
       - test:
           requires:
-            - test
-      - deploy:
-          requires:
-            - test
+            - queue/block_workflow
+      - deploy
 
 jobs: # a collection of steps
   build: # runs not using Workflows must have a `build` job as entry point
