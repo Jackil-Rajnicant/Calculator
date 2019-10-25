@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="CalculateTest" time="0.063" tests="9" errors="0" skipped="0" failures="1">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="CalculateTest" time="0.066" tests="9" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
     <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home/jre/lib"/>
@@ -64,20 +64,13 @@
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase name="allowMultipleDelimiters" classname="CalculateTest" time="0.004"/>
+  <testcase name="allowMultipleDelimiters" classname="CalculateTest" time="0.005"/>
   <testcase name="threeNumbersWithDelimitedEitherSideReturnsTheSumTest" classname="CalculateTest" time="0"/>
-  <testcase name="numbersBiggerThanThousandShouldBeIgnored" classname="CalculateTest" time="0.005">
-    <failure message="&#10;Expected: &lt;2&gt;&#10;     but: was &lt;4&gt;" type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: 
-
-Expected: <2>
-     but: was <4>
-	at CalculateTest.numbersBiggerThanThousandShouldBeIgnored(CalculateTest.java:81)
-]]></failure>
-  </testcase>
+  <testcase name="numbersBiggerThanThousandShouldBeIgnored" classname="CalculateTest" time="0"/>
   <testcase name="delimitersCanBeOfAnyLengthWithTheFollowingFormat" classname="CalculateTest" time="0"/>
   <testcase name="twoNumbersWithCommaDelimitedReturnsTheSumTest" classname="CalculateTest" time="0"/>
   <testcase name="emptyStringRetureZeroTest" classname="CalculateTest" time="0"/>
-  <testcase name="twoNumbersWithNewLineDelimitedReturnsTheSumTest" classname="CalculateTest" time="0"/>
+  <testcase name="twoNumbersWithNewLineDelimitedReturnsTheSumTest" classname="CalculateTest" time="0.001"/>
   <testcase name="negativeNumbersThrowAnExecption" classname="CalculateTest" time="0"/>
   <testcase name="singleNumberReturnsValueTest" classname="CalculateTest" time="0"/>
 </testsuite>
