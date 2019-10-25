@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.List;
 
 public class Calulator {
 
@@ -9,15 +10,36 @@ public class Calulator {
 
         if(addNumbers.startsWith("-")) throw new IllegalArgumentException(NEGATIVE_NUMBERS_EXCEPTION_MESSAGE);
         if(addNumbers.length() > 1){
-            String [] numbers = addNumbers.trim().replaceAll("\\D","").split("");
+            String nums = removeNumberMore1000(addNumbers);
+            String [] numbers = nums.trim().replaceAll("\\D","").split("");
             int sum = 0;
             for(String number:numbers)
-                sum = sum + Integer.parseInt(number);
+                if(Integer.parseInt(number) < 1000) {
+                    sum = sum + Integer.parseInt(number);
+                }
             return sum;
         }else
             return Integer.parseInt(addNumbers);
-
     }
 
+    private String removeNumberMore1000(String addNumbers) {
+        StringBuilder sb = new StringBuilder();
+        for(char c : addNumbers.toCharArray()){
+            if(Character.isDigit(c)){
+                sb.append(c);
+            }else{
+                sb.append(" ");
+            }
+        }
+        String[] numbers = sb.toString().replaceAll(" +", " ").split(" ");
 
+        for(String num:numbers){
+            if(!num.equals("")){
+                if(Integer.parseInt(num)> 1000){
+                    addNumbers = addNumbers.replace(num,"");
+                }
+            }
+        }
+        return addNumbers;
+    }
 }
