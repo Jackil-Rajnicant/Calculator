@@ -4,12 +4,7 @@ workflows:
   version: 2
   "Build, Test & Run":
     jobs:
-      - queue/block_workflow:
-          time: '10'
-          consider-branch: false
-      - build:
-          requires:
-            - test
+      - build
       - test
 
 jobs: # a collection of steps
@@ -53,4 +48,5 @@ jobs: # a collection of steps
 
     steps:
       - run: mvn test # run the actual tests
+          command: "echo file ${AUTO_FILE} dir ${AUTO_DIR}"
 
