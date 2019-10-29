@@ -11,11 +11,11 @@ workflows:
           time: '10'
           consider-branch: false
       - build:
-          - requires:
-              - test
+          requires:
+            - test
       - test:
           requires:
-              - queue/block_workflow
+            - queue/block_workflow
 
 jobs: # a collection of steps
   build: # runs not using Workflows must have a `build` job as entry point
