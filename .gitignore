@@ -1,5 +1,15 @@
+*.class
 target
-.DS_Store
+/bin/
+/.settings/
+.project
+.classpath
 .idea
-*.iml
-*.log
+.DS_Store
+# Package Files
+*.jar
+*.war
+*.ear
+
+# Serverless directories
+.serverless

@@ -1,3 +1,5 @@
+package com.serverless;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -6,7 +8,7 @@ public class Calulator {
     private static String NEGATIVE_NUMBERS_EXCEPTION_MESSAGE = "Negative numbers are not supported";
     private static String EMPTY_STRING_EXCEPTION_MESSAGE = "Empty string are not supported";
 
-    protected int add(String addNumbers){
+    public int add(String addNumbers){
 
         if(addNumbers.startsWith("-")) throw new IllegalArgumentException(NEGATIVE_NUMBERS_EXCEPTION_MESSAGE);
         if(addNumbers.length() > 1){
