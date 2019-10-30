@@ -4,12 +4,13 @@ workflows:
   version: 2
   "Build, Test & Run":
     jobs:
-      - build
+      - build:
+        context: aws-credentials
 #      - test
-      - deploy_dev:
-          requires:
-            - build
-          context: aws-credentials
+#      - deploy_dev:
+#          requires:
+#            - build
+#          context: aws-credentials
 jobs: # a collection of steps
   build: # runs not using Workflows must have a `build` job as entry point
 
