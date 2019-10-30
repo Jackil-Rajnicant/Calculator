@@ -47,7 +47,7 @@ jobs: # a collection of steps
       docker:
         - image: circleci/node:10.15
 
-      working_directory: ~/circleci/Jackil-Rajnicant/Calculator
+      working_directory: ~/circleci/Jackil-Rajnicant/Calculator/target
 
       steps:
         - checkout
