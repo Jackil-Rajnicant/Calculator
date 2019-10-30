@@ -6,7 +6,10 @@ workflows:
     jobs:
       - build
 #      - test
-
+      - deploy_dev:
+          requires:
+            - build
+          context: AWS
 jobs: # a collection of steps
   build: # runs not using Workflows must have a `build` job as entry point
 
@@ -39,6 +42,22 @@ jobs: # a collection of steps
       - store_artifacts: # store the uberjar as an artifact
 
           path: target/Calculator-1.0-SNAPSHOT.jar
+
+  deploy_dev:
+      docker:
+        - image: circleci/node:10.15
+
+      working_directory: ~/Jackil-Rajnicant/Calculator
+
+      steps:
+        - checkout
+
+        - restore_cache:
+            keys:
+              - Calculator-{{ checksum "pom.xml" }}
+
+        - deploy:
+            command: npx serverless deploy --stage dev
 
 #  test:
 #    working_directory: ~/Jackil-Rajnicant/Calculator    # directory where steps will run
