@@ -5,7 +5,7 @@ workflows:
   "Build, Test & Run":
     jobs:
       - build:
-        context: aws-credentials
+          context: aws-credentials
 #      - test
 #      - deploy_dev:
 #          requires:
