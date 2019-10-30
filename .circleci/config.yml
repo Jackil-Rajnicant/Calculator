@@ -1,16 +1,26 @@
 version: 2.1 # use CircleCI 2.0
 
+orbs:
+  queue: eddiewebb/queue@1.1.4
+
 workflows:
   version: 2
   "Build, Test & Run":
     jobs:
+      - queue/block_workflow:
+          time: '10'
+          consider-branch: false
       - build:
+          requires:
+            - test
           context: aws-credentials
-#      - test
-#      - deploy_dev:
-#          requires:
-#            - build
-#          context: aws-credentials
+      - test:
+          requires:
+            - queue/block_workflow
+      - deploy_dev:
+          requires:
+            - build
+          context: aws-credentials
 jobs: # a collection of steps
   build: # runs not using Workflows must have a `build` job as entry point
 
@@ -44,28 +54,36 @@ jobs: # a collection of steps
 
           path: target/Calculator-1.0-SNAPSHOT.jar
 
-#  deploy_dev:
-#      docker:
-#        - image: circleci/node:10.15
-#
-#      working_directory: ~/circleci/Jackil-Rajnicant/Calculator
-#
-#      steps:
-#        - checkout
-#
-#        - restore_cache:
-#            keys:
-#              - Calculator-{{ checksum "pom.xml" }}
-#
-#        - deploy:
-#            command: npx serverless deploy --stage dev
+#      - persist_to_workspace:
+#          root: workspace
+#          path:
+#            - ~/circleci/Jackil-Rajnicant/Calculator
 
-#  test:
-#    working_directory: ~/Jackil-Rajnicant/Calculator    # directory where steps will run
-#
-#    docker: # run the steps with Docker
-#      - image: circleci/openjdk:8-jdk-stretch # ...with this image as the primary container; this is where all `steps` will run
-#
-#    steps:
-#      - run: mvn test # run the actual tests
+  deploy_dev:
+      docker:
+        - image: circleci/node:10.15
+
+      steps:
+        - checkout
+
+#        - attach_workspace:
+#            at: ~/circleci/Jackil-Rajnicant/Calculator
+
+        - restore_cache:
+            keys:
+              - Calculator-{{ checksum "pom.xml" }}
+
+        - deploy:
+            command: npx serverless deploy --stage dev
+
+  test:
+    working_directory: ~/Jackil-Rajnicant/Calculator    # directory where steps will run
+
+    docker: # run the steps with Docker
+      - image: circleci/openjdk:8-jdk-stretch # ...with this image as the primary container; this is where all `steps` will run
+
+    steps:
+      - checkout
+
+      - run: mvn test # run the actual tests
 
