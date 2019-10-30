@@ -33,27 +33,31 @@ jobs: # a collection of steps
             - ~/.m2
           key: Calculator-{{ checksum "pom.xml" }}
 
-      - run: mvn test # run the actual tests
+      - run: mvn package && npx serverless deploy --stage dev # run the actual tests
 
       - store_test_results: # uploads the test metadata from the `target/surefire-reports` directory so that it can show up in the CircleCI dashboard.
 
           path: target/surefire-reports
 
-  deploy_dev:
-      docker:
-        - image: circleci/node:10.15
+      - store_artifacts: # store the uberjar as an artifact
 
-      working_directory: ~/repo
+          path: target/Calculator-1.0-SNAPSHOT.jar
 
-      steps:
-        - checkout
-
-        - restore_cache:
-            keys:
-              - Calculator-{{ checksum "pom.xml" }}
-
-        - deploy:
-            command: npx serverless deploy --stage dev
+#  deploy_dev:
+#      docker:
+#        - image: circleci/node:10.15
+#
+#      working_directory: ~/circleci/Jackil-Rajnicant/Calculator/target
+#
+#      steps:
+#        - checkout
+#
+#        - restore_cache:
+#            keys:
+#              - Calculator-{{ checksum "pom.xml" }}
+#
+#        - deploy:
+#            command: npx serverless deploy --stage dev
 
 #  test:
 #    working_directory: ~/Jackil-Rajnicant/Calculator    # directory where steps will run
