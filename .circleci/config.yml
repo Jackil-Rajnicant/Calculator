@@ -34,7 +34,7 @@ jobs: # a collection of steps
             - ~/.m2
           key: Calculator-{{ checksum "pom.xml" }}
 
-      - run: mvn package && npm install -g serverless && serverless deploy --stage dev # run the actual tests
+      - run: mvn package && serverless deploy --stage dev # run the actual tests
 
       - store_test_results: # uploads the test metadata from the `target/surefire-reports` directory so that it can show up in the CircleCI dashboard.
 
