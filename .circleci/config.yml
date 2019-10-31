@@ -24,33 +24,33 @@ workflows:
 jobs: # a collection of steps
   build: # runs not using Workflows must have a `build` job as entry point
 
-    working_directory: ~/Jackil-Rajnicant/Calculator    # directory where steps will run
+    working_directory: ~/Jackil-Rajnicant/Calculator
 
-    docker: # run the steps with Docker
-      - image: softinstigate/serverless # ...with this image as the primary container; this is where all `steps` will run
+    docker:
+      - image: softinstigate/serverless
 
-    steps: # a collection of executable commands
+    steps:
 
-      - checkout # check out source code to working directory
+      - checkout
 
-      - restore_cache: # restore the saved cache after the first run or if `pom.xml` has changed
+      - restore_cache:
 
           key: Calculator-{{ checksum "pom.xml" }}
 
-      - run: mvn dependency:go-offline # gets the project dependencies
+      - run: mvn dependency:go-offline
 
-      - save_cache: # saves the project dependencies
+      - save_cache: #
           paths:
             - ~/.m2
           key: Calculator-{{ checksum "pom.xml" }}
 
-      - run: mvn verify # run the actual tests
+      - run: mvn verify
 
-      - store_test_results: # uploads the test metadata from the `target/surefire-reports` directory so that it can show up in the CircleCI dashboard.
+      - store_test_results:
 
           path: target/surefire-reports
 
-      - store_artifacts: # store the uberjar as an artifact
+      - store_artifacts:
 
           path: target/Calculator-1.0-SNAPSHOT.jar
 
@@ -62,6 +62,7 @@ jobs: # a collection of steps
   deploy_dev:
       docker:
         - image: circleci/node:10.15
+        - image: circleci/openjdk:8-jdk-stretch
 
       steps:
         - checkout
@@ -78,13 +79,13 @@ jobs: # a collection of steps
             command: npx serverless deploy --stage dev
 
   test:
-    working_directory: ~/Jackil-Rajnicant/Calculator    # directory where steps will run
+    working_directory: ~/Jackil-Rajnicant/Calculator
 
-    docker: # run the steps with Docker
-      - image: circleci/openjdk:8-jdk-stretch # ...with this image as the primary container; this is where all `steps` will run
+    docker:
+      - image: circleci/openjdk:8-jdk-stretch
 
     steps:
       - checkout
 
-      - run: mvn test # run the actual tests
+      - run: mvn test
 
