@@ -24,8 +24,6 @@ workflows:
 jobs: # a collection of steps
   build: # runs not using Workflows must have a `build` job as entry point
 
-    working_directory: ~/Jackil-Rajnicant/Calculator
-
     docker:
       - image: softinstigate/serverless
 
@@ -38,6 +36,8 @@ jobs: # a collection of steps
           paths:
             - ~/.m2
           key: Calculator-{{ checksum "pom.xml" }}
+      - run: pwd
+      - run: ls -al
       - run: mvn package
 
       - persist_to_workspace:
