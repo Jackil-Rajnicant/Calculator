@@ -12,6 +12,26 @@ workflows:
           requires:
             - build
           context: aws-credentials
+      - deploy_uat:
+          requires:
+            - deploy_dev
+          context: aws-credentials
+      - deploy_qa:
+          requires:
+            - deploy_dev
+          context: aws-credentials
+      - deploy_preprod:
+          requires:
+            - deploy_qa
+            - deploy_uat
+          context: aws-credentials
+          type: approval
+      - deploy_prd:
+          requires:
+            - deploy_preprod
+          context: aws-credentials
+          type: approval
+
 jobs:
   build:
 
@@ -35,6 +55,51 @@ jobs:
             - Calculator-1.0-SNAPSHOT.jar
 
   deploy_dev:
+    docker:
+      - image: circleci/node:10.15
+
+    steps:
+      - checkout
+      - attach_workspace:
+          at: target
+      - deploy:
+          command: npx serverless deploy --stage dev
+
+  deploy_uat:
+    docker:
+      - image: circleci/node:10.15
+
+    steps:
+      - checkout
+      - attach_workspace:
+          at: target
+      - deploy:
+          command: npx serverless deploy --stage dev
+
+
+  deploy_qa:
+    docker:
+      - image: circleci/node:10.15
+
+    steps:
+      - checkout
+      - attach_workspace:
+          at: target
+      - deploy:
+          command: npx serverless deploy --stage dev
+
+  deploy_preprod:
+    docker:
+      - image: circleci/node:10.15
+
+    steps:
+      - checkout
+      - attach_workspace:
+          at: target
+      - deploy:
+          command: npx serverless deploy --stage dev
+
+  deploy_prd:
     docker:
       - image: circleci/node:10.15
 
