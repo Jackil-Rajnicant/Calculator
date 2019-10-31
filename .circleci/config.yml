@@ -31,11 +31,11 @@ jobs: # a collection of steps
       - checkout
       - restore_cache:
           key: Calculator-{{ checksum "pom.xml" }}
+      - run: mvn dependency:go-offline
       - save_cache: #
           paths:
             - ~/.m2
           key: Calculator-{{ checksum "pom.xml" }}
-
       - run: mvn package
       - run: cd ..
       - run: pwd
@@ -44,6 +44,12 @@ jobs: # a collection of steps
           root: /root/project/target
           paths:
             - Calculator-1.0-SNAPSHOT.jar
+
+      - store_test_results:
+          path: target/surefire-reports
+
+      - store_artifacts:
+          path: target/Calculator-1.0-SNAPSHOT.jar
 
   deploy_dev:
     docker:
