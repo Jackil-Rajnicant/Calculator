@@ -26,7 +26,7 @@ public class CalculateTest {
 
         int result = calculator.add("1");
 
-        assertThat(result,equalTo(0));
+        assertThat(result,equalTo(1));
 
     }
 
