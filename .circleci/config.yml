@@ -40,9 +40,9 @@ jobs: # a collection of steps
       - run: cd ..
 
       - persist_to_workspace:
-          root: /root/project
+          root: /root
           paths:
-            - target
+            - project
 
       - store_test_results:
           path: target/surefire-reports
@@ -58,8 +58,8 @@ jobs: # a collection of steps
 
     steps:
       - attach_workspace:
-          at: Jackil-Rajnicant
-      - run: cd Jackil-Rajnicant
+          at: project
+      - run: cd project
       - run: ls -al
 
       - deploy:
