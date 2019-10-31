@@ -54,13 +54,12 @@ jobs: # a collection of steps
 
   deploy_dev:
 
-    - checkout
-
     docker:
       - image: circleci/node:10.15
-      - image: circleci/openjdk:8-jdk-stretch
 
     steps:
+      - checkout
+
       - attach_workspace:
           at: target
 
