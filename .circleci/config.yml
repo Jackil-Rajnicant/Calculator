@@ -39,8 +39,10 @@ jobs: # a collection of steps
             - ~/.m2
           key: Calculator-{{ checksum "pom.xml" }}
       - run: mvn package
-      - run: cd
+      - run: cd ~
+      - run: ls -al
       - run: mkdir -p workspace
+      - run: ls -al
       - run: pwd
       - run: cp -p /Jackil-Rajnicant/Calculator /workspace
       - persist_to_workspace:
