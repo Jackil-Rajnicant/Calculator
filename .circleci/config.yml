@@ -39,11 +39,14 @@ jobs: # a collection of steps
       - run: pwd
       - run: ls -al
       - run: mvn package
+      - run: ls -al
+      - run: cd ..
+      - run: ls -al
 
       - persist_to_workspace:
-          root: Jackil-Rajnicant
+          root: project
           paths:
-            - Calculator
+            - target
 
       - store_test_results:
           path: target/surefire-reports
