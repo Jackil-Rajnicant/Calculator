@@ -45,9 +45,9 @@ jobs: # a collection of steps
       - run: ls -al
 
       - persist_to_workspace:
-          root: target
+          root: workplace
           paths:
-            - target
+            - Jackil-Rajnicant/Calculator
 
       - store_test_results:
           path: target/surefire-reports
