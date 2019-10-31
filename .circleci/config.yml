@@ -1,22 +1,13 @@
 version: 2.1 # use CircleCI 2.0
 
-orbs:
-  queue: eddiewebb/queue@1.1.4
-
 workflows:
   version: 2
   "Build, Test & Run":
     jobs:
-      - queue/block_workflow:
-          time: '10'
-          consider-branch: false
       - build:
           requires:
             - test
-          context: aws-credentials
-      - test:
-          requires:
-            - queue/block_workflow
+      - test
       - deploy_dev:
           requires:
             - build
