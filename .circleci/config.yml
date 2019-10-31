@@ -25,7 +25,7 @@ jobs: # a collection of steps
   build: # runs not using Workflows must have a `build` job as entry point
 
     docker:
-      - image: softinstigate/serverless
+      - image: circleci/openjdk:8-jdk-stretch
 
     steps:
       - checkout
@@ -36,13 +36,7 @@ jobs: # a collection of steps
           paths:
             - ~/.m2
           key: Calculator-{{ checksum "pom.xml" }}
-      - run: pwd
-      - run: ls -al
       - run: mvn package
-      - run: ls -al
-      - run: cd ..
-      - run: pwd
-      - run: ls -al
 
       - persist_to_workspace:
           root: /root/project
@@ -59,12 +53,12 @@ jobs: # a collection of steps
   deploy_dev:
     docker:
       - image: circleci/node:10.15
-      - image: circleci/openjdk:8-jdk-stretch
 
     steps:
       - attach_workspace:
           at: Jackil-Rajnicant
-      - run: cd Jackil-Rajnicant/Calculate
+      - run: ls -al Jackil-Rajnicant
+      - run: cd Jackil-Rajnicant
 
       - deploy:
           command: npx serverless deploy --stage dev
