@@ -30,28 +30,27 @@ jobs: # a collection of steps
       - image: softinstigate/serverless
 
     steps:
-
       - checkout
-
       - restore_cache:
-
           key: Calculator-{{ checksum "pom.xml" }}
-
       - run: mvn dependency:go-offline
-
       - save_cache: #
           paths:
             - ~/.m2
           key: Calculator-{{ checksum "pom.xml" }}
-
-      - run: mvn verify
+      - run: mvn package
+      - run: cd
+      - run: mkdir -p workspace
+      - run: cp -p /Jackil-Rajnicant/Calculator /workspace
+      - persist_to_workspace:
+          root: workspace
+          paths:
+            - Calculator
 
       - store_test_results:
-
           path: target/surefire-reports
 
       - store_artifacts:
-
           path: target/Calculator-1.0-SNAPSHOT.jar
 
 #      - persist_to_workspace:
@@ -60,23 +59,17 @@ jobs: # a collection of steps
 #            - ~/circleci/Jackil-Rajnicant/Calculator
 
   deploy_dev:
-      docker:
-        - image: circleci/node:10.15
-        - image: circleci/openjdk:8-jdk-stretch
+    docker:
+      - image: circleci/node:10.15
+      - image: circleci/openjdk:8-jdk-stretch
 
-      steps:
-        - checkout
+    steps:
+      - attach_workspace:
+          at: workspace
+      - run: cd workspace/Calculate
 
-#        - attach_workspace:
-#            at: ~/circleci/Jackil-Rajnicant/Calculator
-        - run: mvn package
-
-        - restore_cache:
-            keys:
-              - Calculator-{{ checksum "pom.xml" }}
-
-        - deploy:
-            command: npx serverless deploy --stage dev
+      - deploy:
+          command: npx serverless deploy --stage dev
 
   test:
     working_directory: ~/Jackil-Rajnicant/Calculator
