@@ -21,8 +21,8 @@ workflows:
           requires:
             - build
           context: aws-credentials
-jobs: # a collection of steps
-  build: # runs not using Workflows must have a `build` job as entry point
+jobs:
+  build:
 
     docker:
       - image: circleci/openjdk:8-jdk-stretch
@@ -37,19 +37,11 @@ jobs: # a collection of steps
             - ~/.m2
           key: Calculator-{{ checksum "pom.xml" }}
       - run: mvn package
-      - run: cd ..
-      - run: pwd
 
       - persist_to_workspace:
           root: /home/circleci/project/target
           paths:
             - Calculator-1.0-SNAPSHOT.jar
-
-      - store_test_results:
-          path: target/surefire-reports
-
-      - store_artifacts:
-          path: target/Calculator-1.0-SNAPSHOT.jar
 
   deploy_dev:
     docker:
