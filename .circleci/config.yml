@@ -37,6 +37,7 @@ jobs: # a collection of steps
           key: Calculator-{{ checksum "pom.xml" }}
 
       - run: mvn package
+      - run: cd ..
 
       - persist_to_workspace:
           root: /root/project/target
