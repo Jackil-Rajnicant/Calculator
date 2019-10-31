@@ -43,13 +43,6 @@ jobs: # a collection of steps
           paths:
             - Calculator-1.0-SNAPSHOT.jar
 
-      - store_test_results:
-          path: target/surefire-reports
-
-      - store_artifacts:
-          path: target/Calculator-1.0-SNAPSHOT.jar
-
-
   deploy_dev:
     docker:
       - image: circleci/node:10.15
@@ -63,7 +56,7 @@ jobs: # a collection of steps
 
   test:
     docker:
-      - image: circleci/openjdk:8-jdk-apline
+      - image: circleci/openjdk:8-jdk-alpine
     steps:
       - checkout
       - run: mvn test
