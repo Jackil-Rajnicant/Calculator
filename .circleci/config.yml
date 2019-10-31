@@ -41,10 +41,11 @@ jobs: # a collection of steps
       - run: mvn package
       - run: ls -al
       - run: cd ..
+      - run: pwd
       - run: ls -al
 
       - persist_to_workspace:
-          root: project
+          root: target
           paths:
             - target
 
