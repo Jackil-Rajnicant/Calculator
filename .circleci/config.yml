@@ -39,14 +39,9 @@ jobs: # a collection of steps
             - ~/.m2
           key: Calculator-{{ checksum "pom.xml" }}
       - run: mvn package
-      - run: cd /
-      - run: ls -al
-      - run: mkdir -p workspace
-      - run: ls -al
-      - run: pwd
-      - run: cp -p /Jackil-Rajnicant/Calculator /workspace
+
       - persist_to_workspace:
-          root: workspace
+          root: Jackil-Rajnicant
           paths:
             - Calculator
 
@@ -56,10 +51,6 @@ jobs: # a collection of steps
       - store_artifacts:
           path: target/Calculator-1.0-SNAPSHOT.jar
 
-#      - persist_to_workspace:
-#          root: workspace
-#          path:
-#            - ~/circleci/Jackil-Rajnicant/Calculator
 
   deploy_dev:
     docker:
@@ -68,8 +59,8 @@ jobs: # a collection of steps
 
     steps:
       - attach_workspace:
-          at: workspace
-      - run: cd workspace/Calculate
+          at: Jackil-Rajnicant
+      - run: cd Calculate
 
       - deploy:
           command: npx serverless deploy --stage dev
