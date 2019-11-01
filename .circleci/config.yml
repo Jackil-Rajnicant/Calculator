@@ -57,7 +57,7 @@ workflows:
 
 
 jobs:
-  buildRun:
+  build:
 
     executor: openjdk-executor
 
