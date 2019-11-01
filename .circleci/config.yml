@@ -15,10 +15,10 @@ workflows:
   version: 2
   "Build, Test & Run":
     jobs:
-      - test
       - build:
-          requires:
-            - test
+          filters:
+            branches:
+              only: master
       - deploy_dev:
           requires:
             - build
@@ -57,7 +57,7 @@ workflows:
 
 
 jobs:
-  build:
+  buildRun:
 
     executor: openjdk-executor
 
@@ -156,15 +156,4 @@ jobs:
       - deploy:
           command: echo "Pre Prod Deploy Completed"
 
-  test:
-    executor: openjdk-executor
-    steps:
-      - checkout
-      - restore_cache:
-          key: Calculator-{{ checksum "pom.xml" }}
-      - save_cache:
-          paths:
-            - ~/.m2
-          key: Calculator-{{ checksum "pom.xml" }}
-      - run: mvn test
 
