@@ -1,5 +1,8 @@
 version: 2.1 # use CircleCI 2.0
 
+environment:
+  BRANCH: master
+
 executors:
   node-executor:
     docker:
@@ -16,7 +19,7 @@ workflows:
       - build:
           filters:
             branches:
-              only: master
+              only: $BRANCH
           requires:
             - test
       - deploy_dev:
