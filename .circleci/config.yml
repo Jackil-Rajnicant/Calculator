@@ -12,10 +12,10 @@ workflows:
   version: 2
   "Build, Test & Run":
     jobs:
+      - test
       - build:
           requires:
             - test
-      - test
       - deploy_dev:
           requires:
             - build
@@ -56,8 +56,7 @@ workflows:
 jobs:
   build:
 
-    executor:
-      - openjdk-executor
+    executor: openjdk-executor
 
     steps:
       - checkout
@@ -75,8 +74,7 @@ jobs:
             - Calculator-1.0-SNAPSHOT.jar
 
   deploy_dev:
-    executor:
-      - node-executor
+    executor: node-executor
 
     steps:
       - checkout
@@ -86,8 +84,7 @@ jobs:
           command: npx serverless deploy --stage dev
 
   deploy_uat:
-    executor:
-      - node-executor
+    executor: node-executor
 
     steps:
       - checkout
@@ -97,8 +94,7 @@ jobs:
           command: echo "UAT Deploy Completed"
 
   deploy_qa:
-    executor:
-      - node-executor
+    executor: node-executor
 
     steps:
       - checkout
@@ -108,8 +104,7 @@ jobs:
           command: echo "QA Deploy Completed"
 
   deploy_sit:
-    executor:
-      - node-executor
+    executor: node-executor
 
     steps:
       - checkout
@@ -119,8 +114,7 @@ jobs:
           command: echo "SIT Deploy Completed"
 
   deploy_support:
-    executor:
-      - node-executor
+    executor: node-executor
 
     steps:
       - checkout
@@ -141,8 +135,7 @@ jobs:
           command: echo "PERF Deploy Completed"
 
   deploy_preprod:
-    executor:
-      - node-executor
+    executor: node-executor
 
     steps:
       - checkout
@@ -152,8 +145,7 @@ jobs:
           command: echo "Pre Prod Deploy Completed"
 
   deploy_prd:
-    executor:
-      - node-executor
+    executor: node-executor
 
     steps:
       - checkout
@@ -163,8 +155,7 @@ jobs:
           command: echo "Pre Prod Deploy Completed"
 
   test:
-    executor:
-      - openjdk-executor
+    executor: openjdk-executor
     steps:
       - checkout
       - restore_cache:
