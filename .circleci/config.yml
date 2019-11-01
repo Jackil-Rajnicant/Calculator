@@ -45,11 +45,15 @@ workflows:
           context: aws-credentials
       - int_test:
           requires:
-            - deploy_qa
+            - deploy_uat
+            - deploy_perf
+            - deploy_sit
             - deploy_uat
       - ui_test:
           requires:
-            - deploy_qa
+            - deploy_uat
+            - deploy_perf
+            - deploy_sit
             - deploy_uat
       - deploy_preprod:
           type: approval
