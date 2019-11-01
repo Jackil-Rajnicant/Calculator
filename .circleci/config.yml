@@ -20,6 +20,18 @@ workflows:
           requires:
             - deploy_dev
           context: aws-credentials
+      - deploy_sit:
+          requires:
+            - deploy_dev
+          context: aws-credentials
+      - deploy_perf:
+          requires:
+            - deploy_dev
+          context: aws-credentials
+      - deploy_support:
+          requires:
+            - deploy_dev
+          context: aws-credentials
       - deploy_preprod:
           type: approval
           requires:
@@ -86,6 +98,39 @@ jobs:
           at: target
       - deploy:
           command: echo "QA Deploy Completed"
+
+  deploy_sit:
+    docker:
+      - image: circleci/node:10.15
+
+    steps:
+      - checkout
+      - attach_workspace:
+          at: target
+      - deploy:
+          command: echo "SIT Deploy Completed"
+
+  deploy_support:
+    docker:
+      - image: circleci/node:10.15
+
+    steps:
+      - checkout
+      - attach_workspace:
+          at: target
+      - deploy:
+          command: echo "SUPPORT Deploy Completed"
+
+  deploy_perf:
+    docker:
+      - image: circleci/node:10.15
+
+    steps:
+      - checkout
+      - attach_workspace:
+          at: target
+      - deploy:
+          command: echo "PERF Deploy Completed"
 
   deploy_preprod:
     docker:
