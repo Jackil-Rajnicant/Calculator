@@ -16,13 +16,13 @@ workflows:
           requires:
             - deploy_dev
           context: aws-credentials
-#      - deploy_qa:
-#          requires:
-#            - deploy_dev
-#          context: aws-credentials
+      - deploy_qa:
+          requires:
+            - deploy_dev
+          context: aws-credentials
       - deploy_preprod:
           requires:
-#            - deploy_qa
+            - deploy_qa
             - deploy_uat
           context: aws-credentials
           type: approval
@@ -76,17 +76,16 @@ jobs:
       - deploy:
           command: echo "UAT Deploy Completed"
 
+  deploy_qa:
+    docker:
+      - image: circleci/node:10.15
 
-#  deploy_qa:
-#    docker:
-#      - image: circleci/node:10.15
-#
-#    steps:
-#      - checkout
-#      - attach_workspace:
-#          at: target
-#      - deploy:
-#          command: npx serverless deploy --stage dev
+    steps:
+      - checkout
+      - attach_workspace:
+          at: target
+      - deploy:
+          command: echo "QA Deploy Completed"
 
   deploy_preprod:
     docker:
