@@ -25,12 +25,12 @@ workflows:
             - deploy_qa
             - deploy_uat
           context: aws-credentials
-#          type: approval
+          type: approval
       - deploy_prd:
           requires:
             - deploy_preprod
           context: aws-credentials
-#          type: approval
+          type: approval
 
 jobs:
   build:
@@ -42,8 +42,7 @@ jobs:
       - checkout
       - restore_cache:
           key: Calculator-{{ checksum "pom.xml" }}
-      - run: mvn dependency:go-offline
-      - save_cache: #
+      - save_cache:
           paths:
             - ~/.m2
           key: Calculator-{{ checksum "pom.xml" }}
@@ -114,5 +113,11 @@ jobs:
       - image: circleci/openjdk:8-jdk-stretch
     steps:
       - checkout
+      - restore_cache:
+          key: Calculator-{{ checksum "pom.xml" }}
+      - save_cache:
+          paths:
+            - ~/.m2
+          key: Calculator-{{ checksum "pom.xml" }}
       - run: mvn test
 
