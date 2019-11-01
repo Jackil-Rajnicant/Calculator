@@ -1,5 +1,13 @@
 version: 2.1 # use CircleCI 2.0
 
+executors:
+  node-executor:
+    docker:
+      - image: circleci/node:10.15
+  openjdk-executor:
+    docker:
+      - image: circleci/openjdk:8-jdk-stretch
+
 workflows:
   version: 2
   "Build, Test & Run":
@@ -48,8 +56,8 @@ workflows:
 jobs:
   build:
 
-    docker:
-      - image: circleci/openjdk:8-jdk-stretch
+    executor:
+      - openjdk-executor
 
     steps:
       - checkout
@@ -67,8 +75,8 @@ jobs:
             - Calculator-1.0-SNAPSHOT.jar
 
   deploy_dev:
-    docker:
-      - image: circleci/node:10.15
+    executor:
+      - node-executor
 
     steps:
       - checkout
@@ -78,8 +86,8 @@ jobs:
           command: npx serverless deploy --stage dev
 
   deploy_uat:
-    docker:
-      - image: circleci/node:10.15
+    executor:
+      - node-executor
 
     steps:
       - checkout
@@ -89,8 +97,8 @@ jobs:
           command: echo "UAT Deploy Completed"
 
   deploy_qa:
-    docker:
-      - image: circleci/node:10.15
+    executor:
+      - node-executor
 
     steps:
       - checkout
@@ -100,8 +108,8 @@ jobs:
           command: echo "QA Deploy Completed"
 
   deploy_sit:
-    docker:
-      - image: circleci/node:10.15
+    executor:
+      - node-executor
 
     steps:
       - checkout
@@ -111,8 +119,8 @@ jobs:
           command: echo "SIT Deploy Completed"
 
   deploy_support:
-    docker:
-      - image: circleci/node:10.15
+    executor:
+      - node-executor
 
     steps:
       - checkout
@@ -122,8 +130,8 @@ jobs:
           command: echo "SUPPORT Deploy Completed"
 
   deploy_perf:
-    docker:
-      - image: circleci/node:10.15
+    executor:
+      - node-executor
 
     steps:
       - checkout
@@ -133,8 +141,8 @@ jobs:
           command: echo "PERF Deploy Completed"
 
   deploy_preprod:
-    docker:
-      - image: circleci/node:10.15
+    executor:
+      - node-executor
 
     steps:
       - checkout
@@ -144,8 +152,8 @@ jobs:
           command: echo "Pre Prod Deploy Completed"
 
   deploy_prd:
-    docker:
-      - image: circleci/node:10.15
+    executor:
+      - node-executor
 
     steps:
       - checkout
@@ -155,8 +163,8 @@ jobs:
           command: echo "Pre Prod Deploy Completed"
 
   test:
-    docker:
-      - image: circleci/openjdk:8-jdk-stretch
+    executor:
+      - openjdk-executor
     steps:
       - checkout
       - restore_cache:
