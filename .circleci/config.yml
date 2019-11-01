@@ -25,19 +25,23 @@ workflows:
           context: aws-credentials
       - deploy_uat:
           requires:
-            - deploy_ci
+            - int_test
+            - ui_test
           context: aws-credentials
       - deploy_qa:
           requires:
-            - deploy_ci
+            - int_test
+            - ui_test
           context: aws-credentials
       - deploy_sit:
           requires:
-            - deploy_ci
+            - int_test
+            - ui_test
           context: aws-credentials
       - deploy_perf:
           requires:
-            - deploy_ci
+            - int_test
+            - ui_test
           context: aws-credentials
       - deploy_support:
           requires:
@@ -45,16 +49,10 @@ workflows:
           context: aws-credentials
       - int_test:
           requires:
-            - deploy_uat
-            - deploy_perf
-            - deploy_sit
-            - deploy_uat
+            - deploy_ci
       - ui_test:
           requires:
-            - deploy_uat
-            - deploy_perf
-            - deploy_sit
-            - deploy_uat
+            - deploy_ci
       - deploy_preprod:
           type: approval
           requires:
