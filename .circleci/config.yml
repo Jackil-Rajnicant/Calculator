@@ -21,16 +21,17 @@ workflows:
             - deploy_dev
           context: aws-credentials
       - deploy_preprod:
+          type: approval
           requires:
             - deploy_qa
             - deploy_uat
           context: aws-credentials
-          type: approval
       - deploy_prd:
+          type: approval
           requires:
             - deploy_preprod
           context: aws-credentials
-          type: approval
+
 
 jobs:
   build:
