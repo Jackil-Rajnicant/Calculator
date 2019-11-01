@@ -30,7 +30,7 @@ workflows:
           context: aws-credentials
       - deploy_support:
           requires:
-            - deploy_dev
+            - deploy_prd
           context: aws-credentials
       - deploy_preprod:
           type: approval
