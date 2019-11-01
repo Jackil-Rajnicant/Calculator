@@ -124,8 +124,7 @@ jobs:
           command: echo "SUPPORT Deploy Completed"
 
   deploy_perf:
-    executor:
-      - node-executor
+    executor: node-executor
 
     steps:
       - checkout
