@@ -19,35 +19,43 @@ workflows:
           filters:
             branches:
               only: master
-      - deploy_dev:
+      - deploy_ci:
           requires:
             - build
           context: aws-credentials
       - deploy_uat:
           requires:
-            - deploy_dev
+            - deploy_ci
           context: aws-credentials
       - deploy_qa:
           requires:
-            - deploy_dev
+            - deploy_ci
           context: aws-credentials
       - deploy_sit:
           requires:
-            - deploy_dev
+            - deploy_ci
           context: aws-credentials
       - deploy_perf:
           requires:
-            - deploy_dev
+            - deploy_ci
           context: aws-credentials
       - deploy_support:
           requires:
             - deploy_prd
           context: aws-credentials
-      - deploy_preprod:
-          type: approval
+      - int_test:
           requires:
             - deploy_qa
             - deploy_uat
+      - ui_test:
+          requires:
+            - deploy_qa
+            - deploy_uat
+      - deploy_preprod:
+          type: approval
+          requires:
+            - ui_test
+            - int_test
           context: aws-credentials
       - deploy_prd:
           type: approval
@@ -76,7 +84,7 @@ jobs:
           paths:
             - Calculator-1.0-SNAPSHOT.jar
 
-  deploy_dev:
+  deploy_ci:
     executor: node-executor
 
     steps:
@@ -135,6 +143,28 @@ jobs:
           at: target
       - deploy:
           command: echo "PERF Deploy Completed"
+
+  int_test:
+    executor: node-executor
+
+    steps:
+      - checkout
+      - attach_workspace:
+          at: target
+      - deploy:
+          command: echo "Running Integration test"
+
+
+  ui_test:
+    executor: node-executor
+
+    steps:
+      - checkout
+      - attach_workspace:
+          at: target
+      - deploy:
+          command: echo "Running UI tests"
+
 
   deploy_preprod:
     executor: node-executor
