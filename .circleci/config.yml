@@ -17,9 +17,6 @@ workflows:
     jobs:
       - test
       - build:
-          filters:
-            branches:
-              only: $BRANCH
           requires:
             - test
       - deploy_dev:
