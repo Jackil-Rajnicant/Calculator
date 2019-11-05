@@ -73,7 +73,6 @@ workflows:
 
 
 jobs:
-
   test:
     executor: openjdk-executor
 
@@ -88,7 +87,6 @@ jobs:
       - run: mvn test
 
   buildPrBranch:
-
     executor: openjdk-executor
 
     steps:
@@ -107,7 +105,6 @@ jobs:
             - Calculator-1.0-SNAPSHOT.jar
 
   build:
-
     executor: openjdk-executor
 
     steps:
