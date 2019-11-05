@@ -96,20 +96,20 @@ jobs:
 
     executor: openjdk-executor
 
-      steps:
-        - checkout
-        - restore_cache:
-            key: Calculator-{{ checksum "pom.xml" }}
-        - save_cache:
-            paths:
-              - ~/.m2
-            key: Calculator-{{ checksum "pom.xml" }}
-        - run: mvn package
+    steps:
+      - checkout
+      - restore_cache:
+          key: Calculator-{{ checksum "pom.xml" }}
+      - save_cache:
+          paths:
+            - ~/.m2
+          key: Calculator-{{ checksum "pom.xml" }}
+      - run: mvn package
 
-        - persist_to_workspace:
-            root: /home/circleci/project/target
-            paths:
-              - Calculator-1.0-SNAPSHOT.jar
+      - persist_to_workspace:
+          root: /home/circleci/project/target
+          paths:
+            - Calculator-1.0-SNAPSHOT.jar
 
   build:
 
