@@ -71,7 +71,6 @@ workflows:
             - deploy_preprod
           context: aws-credentials
 
-
 jobs:
   test:
     executor: openjdk-executor
@@ -192,7 +191,6 @@ jobs:
       - deploy:
           command: echo "Running Integration test"
 
-
   ui_test:
     executor: node-executor
 
@@ -202,7 +200,6 @@ jobs:
           at: target
       - deploy:
           command: echo "Running UI tests"
-
 
   deploy_preprod:
     executor: node-executor
