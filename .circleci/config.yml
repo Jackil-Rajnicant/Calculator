@@ -87,11 +87,6 @@ jobs:
           key: Calculator-{{ checksum "pom.xml" }}
       - run: mvn test
 
-      - persist_to_workspace:
-          root: /home/circleci/project/target
-          paths:
-            - Calculator-1.0-SNAPSHOT.jar
-
   buildPrBranch:
 
     executor: openjdk-executor
