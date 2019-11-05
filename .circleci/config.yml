@@ -15,10 +15,14 @@ workflows:
   version: 2
   "Build, Test & Run":
     jobs:
+      - test
+      - buildPrBranch:
+          requires:
+            - test
       - build:
           filters:
             branches:
-              only: $BRANCH
+              only: master
       - deploy_ci:
           requires:
             - build
@@ -69,6 +73,44 @@ workflows:
 
 
 jobs:
+
+  test:
+    executor: openjdk-executor
+
+    steps:
+      - checkout
+      - restore_cache:
+          key: Calculator-{{ checksum "pom.xml" }}
+      - save_cache:
+          paths:
+            - ~/.m2
+          key: Calculator-{{ checksum "pom.xml" }}
+      - run: mvn test
+
+      - persist_to_workspace:
+          root: /home/circleci/project/target
+          paths:
+            - Calculator-1.0-SNAPSHOT.jar
+
+  buildPrBranch:
+
+    executor: openjdk-executor
+
+      steps:
+        - checkout
+        - restore_cache:
+            key: Calculator-{{ checksum "pom.xml" }}
+        - save_cache:
+            paths:
+              - ~/.m2
+            key: Calculator-{{ checksum "pom.xml" }}
+        - run: mvn package
+
+        - persist_to_workspace:
+            root: /home/circleci/project/target
+            paths:
+              - Calculator-1.0-SNAPSHOT.jar
+
   build:
 
     executor: openjdk-executor
